@@ -41,7 +41,6 @@
   			var areaOrder_anyang = $('input[name=areaOrder_anyang]').val();
   			var areaOrder_paju = $('input[name=areaOrder_paju]').val();
   			
-  			
   			console.log("area : " + area);
   			console.log("rollUp : " + rollUp);
   			console.log("rollUpOrder : " + rollUpOrder);
@@ -70,8 +69,27 @@
     			dataType : "json",
     			contentType : "application/json",
     			success : function(result){
-    				var list = result;
+    				console.log("ajax Success");
+    				var ajaxList = result;
+    				console.log(ajaxList);
+    				console.log(ajaxList[0].area_cd);
+    				$(".trRow").remove();
     				
+    				for(var i in ajaxList){
+    					console.log(ajaxList[i].area_cd);
+    					console.log(ajaxList[i].region_area);
+    					$(".resultTable").append("<tr class='.trRow'><td align='center'>" + ajaxList[i].area_cd + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].region_area + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p0 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p1 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p2 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p3 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p4 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p5 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p6 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p7 + '</td>');
+    					$(".resultTable").append("<td align='center'>" + ajaxList[i].p8 + '</td></tr>');
+    				}
     			}
     		});
     	}
@@ -141,7 +159,7 @@
  	<div class= "proxyTime"> 경과시간 : <span class="proxySec">23 Sec</span> </div> <br>
  	
  	<div id="chart">
- 		<table align="center" border="1" width="1300">
+ 		<table align="center" border="1" width="1300" class="resultTable">
  			<tr bgcolor= #E2E2E2>
  				<td align="center" width="5%">NM</td>
  				<td align="center" width="5%">REGION</td>
@@ -156,7 +174,7 @@
  				<td align="center" width="10%">가스렌지</td>
  			</tr>
  			<c:forEach items="${list}" var = "list">
- 			<tr>
+ 			<tr class="trRow">
  				<td align="center" ><c:out value="${list.area_cd}" /></td>
 				<td align="center" ><c:out value="${list.region_area}" /></td>
 				<td align="center" ><c:out value="${list.p0}" /></td>
