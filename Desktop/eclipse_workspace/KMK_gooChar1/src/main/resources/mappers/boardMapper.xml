@@ -11,8 +11,10 @@
 	</select>
 	
 	<select id="searchList" parameterType="searchVO" resultType="chartVO">
-		SELECT DECODE(GRP,'00',CD_NM,'01',CD_NM||'합계','총계') area_cd
-      ,REGION_AREA                    
+	<![CDATA[
+	SELECT DECODE(GRP,'00',CD_NM,'01',CD_NM||'합계','총계') CDNM
+      ,REGION_AREA
+      ,GRP                     
       ,P0||
        '('||TO_CHAR(ROUND(P0*100/TOT,1),'FM990.0')||'%)'||'*'||
        DECODE(P0,GREATEST(P0,P1,P2,P3,P4,P5,P6,P7,P8),'▲'
@@ -21,7 +23,7 @@
                             ,'01',NVL(SUBSTR(SP0,4,3),MM_SEQ)
                             ,'11',NVL(SUBSTR(SP0,7,3),TM_SEQ))) P0
       ,P1||
-      '('||TO_CHAR(ROUND(P1*100/TOT,1),'FM990.0')||'%'||'*'||
+      '('||TO_CHAR(ROUND(P1*100/TOT,1),'FM990.0')||'%)'||'*'||
        DECODE(P1,GREATEST(P0,P1,P2,P3,P4,P5,P6,P7,P8),'▲'
             ,LEAST(P0,P1,P2,P3,P4,P5,P6,P7,P8),'▼')||        
        TO_NUMBER(DECODE(GRP,'00',NVL(SUBSTR(SP1,1,3),DM_SEQ)
@@ -76,6 +78,7 @@
         TO_NUMBER(DECODE(GRP,'00',NVL(SUBSTR(SP8,1,3),DM_SEQ)
                              ,'01',NVL(SUBSTR(SP8,4,3),MM_SEQ)
                              ,'11',NVL(SUBSTR(SP8,7,3),TM_SEQ))) P8  
+      ,TOT
 FROM (
         SELECT MIN(CD_NM) CD_NM       
               ,AREA_CD
@@ -137,8 +140,8 @@ FROM (
                       ,SUM(SUM(SALE_CNT)) OVER(PARTITION BY AREA_CD,PROD_ID) M_CNT
                       ,SUM(SUM(SALE_CNT)) OVER(PARTITION BY PROD_ID) T_CNT
                 FROM SALE_TBL
-                WHERE AREA_CD = NVL(#{area},AREA_CD)
-                AND   <![CDATA[ROWNUM <= #{gbg}]]>
+                WHERE AREA_CD = NVL(#{CDNM,jdbcType=VARCHAR},AREA_CD)
+                AND   ROWNUM <= #{gbg}
                 GROUP BY AREA_CD
                       ,REGION_AREA 
                       ,PROD_ID  
@@ -147,25 +150,20 @@ FROM (
         AND   LENGTH(TB.CD_ID) = 2        
         GROUP BY ROLLUP(AREA_CD ,REGION_AREA)    
  )
- WHERE GRP = DECODE(#{rollUp},'data','00','median','01','total','11',GRP) 
+ WHERE GRP = DECODE(#{rollUp},'D','00','M','01','T','11',GRP) 
  ORDER BY DECODE(AREA_CD,'10',#{areaOrder_seoul}
                      ,'20',#{areaOrder_busan}
                      ,'30',#{areaOrder_gwangju}
                      ,'40',#{areaOrder_daejeon}
-                     ,'50',#{areaOrder_gangwon}
-                     ,'60',#{areaOrder_pyeongtaek}
-                     ,'70',#{areaOrder_incheon}
-                     ,'80',#{areaOrder_asan}
-                     ,'90',#{areaOrder_anyang}
+                     ,'50',#{areaOrder_pyeongtaek}
+                     ,'60',#{areaOrder_incheon}
+                     ,'70',#{areaOrder_asan}
+                     ,'80',#{areaOrder_anyang}
+                     ,'90',#{areaOrder_gangwon}
                      ,'95',#{areaOrder_paju})
           ,GRP*DECODE(#{rollUpOrder},'F',1,-1)
+]]>
 	</select>
-	
-	
-	
-	
-	
-	
 	
 	<select id="chartList" resultType="chartVO">
 		SELECT AREA_CD

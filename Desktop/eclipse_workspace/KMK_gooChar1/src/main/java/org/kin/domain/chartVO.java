@@ -1,7 +1,7 @@
 package org.kin.domain;
 
 public class chartVO {
-	String area_cd;
+	String CDNM;
 	String region_area;
 	String p0;
 	String p1;
@@ -13,11 +13,11 @@ public class chartVO {
 	String p7;
 	String p8;
 	
-	public String getArea_cd() {
-		return area_cd;
+	public String getCDNM() {
+		return CDNM;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setCDNM(String CDNM) {
+		this.CDNM = CDNM;
 	}
 	public String getRegion_area() {
 		return region_area;
@@ -81,7 +81,7 @@ public class chartVO {
 	}
 	@Override
 	public String toString() {
-		return "chartVO [area_cd=" + area_cd + ", region_area=" + region_area + ", p0=" + p0 + ", p1=" + p1 + ", p2="
+		return "chartVO [CDNM=" + CDNM + ", region_area=" + region_area + ", p0=" + p0 + ", p1=" + p1 + ", p2="
 				+ p2 + ", p3=" + p3 + ", p4=" + p4 + ", p5=" + p5 + ", p6=" + p6 + ", p7=" + p7 + ", p8=" + p8
 				 + "]";
 	}

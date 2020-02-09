@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class timeAdvice {
 
+	long proxyTime;
+	
+	public long getProxyTime() {
+		return proxyTime;
+	}
+
 	@Around("execution(public * org.kin.service..*(..))")
 	public Object logAroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable{
 		 String signatureString = joinPoint.getSignature().toShortString();
@@ -22,6 +28,7 @@ public class timeAdvice {
 		    } finally {
 		      long finish = System.currentTimeMillis()/1000;
 		      long time = finish - start;
+		      proxyTime = time;
 		      System.out.println("Around [" + signatureString + "] 종료");
 		      System.out.println("Around [" + signatureString + "] 실행시간 : " + time + "초");
 		    }

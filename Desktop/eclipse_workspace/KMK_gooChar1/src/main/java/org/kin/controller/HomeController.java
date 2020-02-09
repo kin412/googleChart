@@ -2,8 +2,11 @@ package org.kin.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import org.kin.domain.searchVO;
+import org.kin.proxy.timeAdvice;
 import org.kin.service.chartService;
 import org.kin.service.orgTblService;
 import org.slf4j.Logger;
@@ -28,6 +31,9 @@ public class HomeController {
 	@Autowired
 	chartService chart_service;
 	
+	@Autowired
+	timeAdvice ta;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -51,7 +57,6 @@ public class HomeController {
 		
 		model.addAttribute("list",service.list());
 		
-		
 		return "list";
 		
 	}
@@ -60,7 +65,29 @@ public class HomeController {
 	public String gooChar(Model model) throws Exception{
 		logger.info("gooChar In");
 		
-		model.addAttribute("list",chart_service.list());
+		//model.addAttribute("list",chart_service.list());
+		//System.out.println("proxyTime check : " + ta.getProxyTime());
+		
+		searchVO vo = new searchVO();
+		vo.setCDNM("");
+		vo.setRollUp("all");
+		vo.setRollUpOrder("F");
+		vo.setGbg(33925130);
+		vo.setAreaOrder_seoul(1);
+		vo.setAreaOrder_busan(2);
+		vo.setAreaOrder_gwangju(3);
+		vo.setAreaOrder_daejeon(4);
+		vo.setAreaOrder_pyeongtaek(5);
+		vo.setAreaOrder_incheon(6);
+		vo.setAreaOrder_asan(7);
+		vo.setAreaOrder_anyang(8);
+		vo.setAreaOrder_gangwon(9);
+		vo.setAreaOrder_paju(10);
+		
+		List search = chart_service.searchList(vo);
+		System.out.println("proxyTime check : " + ta.getProxyTime());
+		model.addAttribute("list",search);
+		model.addAttribute("proxyTime",ta.getProxyTime());
 		
 		return "gooCharView";
 		
