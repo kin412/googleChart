@@ -28,8 +28,9 @@ public class SearchController {
 	@Autowired
 	chartService chart_service;
 	
-	@Autowired
-	timeAdvice ta;
+	/*
+	 * @Autowired timeAdvice ta;
+	 */
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 	
@@ -42,8 +43,10 @@ public class SearchController {
 		
 		
 		List search = chart_service.searchList(vo);
-		search.add(ta.getProxyTime());
-		System.out.println("proxyTime check : " + ta.getProxyTime());
+		/*
+		 * search.add(ta.getProxyTime()); System.out.println("proxyTime check : " +
+		 * ta.getProxyTime());
+		 */
 		
 		
 		return new ResponseEntity<>(search, HttpStatus.OK);

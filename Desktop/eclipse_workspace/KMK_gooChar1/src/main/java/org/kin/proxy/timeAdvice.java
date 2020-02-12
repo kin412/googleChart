@@ -15,7 +15,7 @@ public class timeAdvice {
 		return proxyTime;
 	}
 
-	@Around("execution(public * org.kin.service..*(..))")
+	@Around("execution(public * org.kin.DAO..*(..))")
 	public Object logAroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable{
 		 String signatureString = joinPoint.getSignature().toShortString();
 		    System.out.println("Around [" + signatureString + "] 시작");

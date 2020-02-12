@@ -168,7 +168,13 @@
 	</form><br><br><br><br>
  
  	<hr align="center" style="border: solid 1px; width: 100%;">
- 	<div class="proxyTime"> 경과시간 : <span class="proxySec">${proxyTime}초</span> </div> <br>
+ 	<div class="proxyTime"> 경과시간 : 
+ 		<span class="proxySec">
+ 			<c:forEach items="${list}" var = "list" varStatus = "status">
+ 				<c:if test="${status.last}"> ${list}초</c:if>
+ 			</c:forEach>
+ 		</span> 
+ 	</div> <br>
  	
  	<div id="chart">
  		<table align="center" border="1" width="1300" class="resultTable">
@@ -185,21 +191,25 @@
  				<td align="center" width="10%">전자렌지</td>
  				<td align="center" width="10%">가스렌지</td>
  			</tr>
- 			<c:forEach items="${list}" var = "list">
-	 			
- 			<tr class="trRow">
- 				<td align="center"><c:out value="${list.CDNM}"/></td>
-				<td align="center" ><c:out value="${list.region_area}" /></td>
-				<td align="center" ><c:out value="${list.p0}" /></td>
-				<td align="center" ><c:out value="${list.p1}" /></td>
-				<td align="center" ><c:out value="${list.p2}" /></td>
-				<td align="center" ><c:out value="${list.p3}" /></td>
-				<td align="center" ><c:out value="${list.p4}" /></td>
-				<td align="center" ><c:out value="${list.p5}" /></td>
-				<td align="center" ><c:out value="${list.p6}" /></td>
-				<td align="center" ><c:out value="${list.p7}" /></td>
-				<td align="center" ><c:out value="${list.p8}" /></td>
-			</tr>
+ 			<c:forEach items="${list}" var = "list" varStatus = "status">
+ 				<c:choose>
+	 				<c:when test="${status.last}"></c:when>
+	 				<c:otherwise>
+			 			<tr class="trRow">
+				 				<td align="center"><c:out value="${list.CDNM}"/></td>
+								<td align="center"><c:out value="${list.region_area}" /></td>
+								<td align="center"><c:out value="${list.p0}" /></td>
+								<td align="center"><c:out value="${list.p1}" /></td>
+								<td align="center"><c:out value="${list.p2}" /></td>
+								<td align="center"><c:out value="${list.p3}" /></td>
+								<td align="center"><c:out value="${list.p4}" /></td>
+								<td align="center"><c:out value="${list.p5}" /></td>
+								<td align="center"><c:out value="${list.p6}" /></td>
+								<td align="center"><c:out value="${list.p7}" /></td>
+								<td align="center"><c:out value="${list.p8}" /></td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
  			
  		</table>

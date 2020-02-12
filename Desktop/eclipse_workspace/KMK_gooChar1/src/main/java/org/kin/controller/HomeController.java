@@ -31,8 +31,9 @@ public class HomeController {
 	@Autowired
 	chartService chart_service;
 	
-	@Autowired
-	timeAdvice ta;
+	/*
+	 * @Autowired timeAdvice ta;
+	 */
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -85,9 +86,13 @@ public class HomeController {
 		vo.setAreaOrder_paju(10);
 		
 		List search = chart_service.searchList(vo);
-		System.out.println("proxyTime check : " + ta.getProxyTime());
+		/*
+		 * System.out.println("proxyTime check : " + ta.getProxyTime());
+		 * model.addAttribute("list",search);
+		 * model.addAttribute("proxyTime",ta.getProxyTime());
+		 */
+		
 		model.addAttribute("list",search);
-		model.addAttribute("proxyTime",ta.getProxyTime());
 		
 		return "gooCharView";
 		
