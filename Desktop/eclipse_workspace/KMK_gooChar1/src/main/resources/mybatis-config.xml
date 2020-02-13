@@ -8,6 +8,7 @@
 		<typeAlias type="org.kin.domain.orgTblVO" alias="orgTblVO"/>
 		<typeAlias type="org.kin.domain.chartVO" alias="chartVO"/>
 		<typeAlias type="org.kin.domain.searchVO" alias="searchVO"/>
+		<typeAlias type="org.kin.domain.cdTblVO" alias="cdTblVO"/>
 	 </typeAliases>
 	
 </configuration>

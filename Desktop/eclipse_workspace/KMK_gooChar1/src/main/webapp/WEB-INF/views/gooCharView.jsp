@@ -118,7 +118,12 @@
 		<div class="btn-group area">
 			<select id="CDNM" name="CDNM" class="btn btn-default dropdown-toggle">
 				<option value="">전체</option>
-				<option value="10">서울</option>
+				<c:forEach items="${cdList}" var = "cdList">
+ 					<c:if test="${'Y' eq cdList.use_yn}">
+ 						<option value= "${cdList.cd_id}">${cdList.cd_nm}</option>
+ 					</c:if>
+ 				</c:forEach>
+				<!-- <option value="10">서울</option>
 				<option value="20">부산</option>
 				<option value="30">광주</option>
 				<option value="40">대전</option>
@@ -127,7 +132,7 @@
 				<option value="70">아산</option>
 				<option value="80">안양</option>
 				<option value="90">강원</option>
-				<option value="95">파주</option>
+				<option value="95">파주</option> -->
 			</select>
 		</div>
 		
@@ -181,7 +186,12 @@
  			<tr bgcolor= #E2E2E2 class="header">
  				<td align="center" width="5%">NM</td>
  				<td align="center" width="5%">REGION</td>
- 				<td align="center" width="10%">안마기</td>
+ 				<c:forEach items="${cdList}" var = "cdList">
+					<c:if test="${ null eq cdList.use_yn}">
+						<td align="center" width="10%">${cdList.cd_nm}</td>
+					</c:if>
+ 				</c:forEach>
+ 				<!-- <td align="center" width="10%">안마기</td>
  				<td align="center" width="10%">냉장고</td>
  				<td align="center" width="10%">TV</td>
  				<td align="center" width="10%">세탁기</td>
@@ -189,24 +199,24 @@
  				<td align="center" width="10%">오디오</td>
  				<td align="center" width="10%">청소기</td>
  				<td align="center" width="10%">전자렌지</td>
- 				<td align="center" width="10%">가스렌지</td>
+ 				<td align="center" width="10%">가스렌지</td> -->
  			</tr>
  			<c:forEach items="${list}" var = "list" varStatus = "status">
  				<c:choose>
 	 				<c:when test="${status.last}"></c:when>
 	 				<c:otherwise>
 			 			<tr class="trRow">
-				 				<td align="center"><c:out value="${list.CDNM}"/></td>
-								<td align="center"><c:out value="${list.region_area}" /></td>
-								<td align="center"><c:out value="${list.p0}" /></td>
-								<td align="center"><c:out value="${list.p1}" /></td>
-								<td align="center"><c:out value="${list.p2}" /></td>
-								<td align="center"><c:out value="${list.p3}" /></td>
-								<td align="center"><c:out value="${list.p4}" /></td>
-								<td align="center"><c:out value="${list.p5}" /></td>
-								<td align="center"><c:out value="${list.p6}" /></td>
-								<td align="center"><c:out value="${list.p7}" /></td>
-								<td align="center"><c:out value="${list.p8}" /></td>
+			 				<td align="center"><c:out value="${list.CDNM}"/></td>
+							<td align="center"><c:out value="${list.region_area}" /></td>
+							<td align="center"><c:out value="${list.p0}" /></td>
+							<td align="center"><c:out value="${list.p1}" /></td>
+							<td align="center"><c:out value="${list.p2}" /></td>
+							<td align="center"><c:out value="${list.p3}" /></td>
+							<td align="center"><c:out value="${list.p4}" /></td>
+							<td align="center"><c:out value="${list.p5}" /></td>
+							<td align="center"><c:out value="${list.p6}" /></td>
+							<td align="center"><c:out value="${list.p7}" /></td>
+							<td align="center"><c:out value="${list.p8}" /></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

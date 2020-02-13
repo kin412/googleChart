@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.kin.domain.cdTblVO;
 import org.kin.domain.searchVO;
-import org.kin.proxy.timeAdvice;
 import org.kin.service.chartService;
 import org.kin.service.orgTblService;
 import org.slf4j.Logger;
@@ -86,6 +86,7 @@ public class HomeController {
 		vo.setAreaOrder_paju(10);
 		
 		List search = chart_service.searchList(vo);
+		List<cdTblVO> cdList = chart_service.cdList();
 		/*
 		 * System.out.println("proxyTime check : " + ta.getProxyTime());
 		 * model.addAttribute("list",search);
@@ -93,6 +94,7 @@ public class HomeController {
 		 */
 		
 		model.addAttribute("list",search);
+		model.addAttribute("cdList",cdList);
 		
 		return "gooCharView";
 		
