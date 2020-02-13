@@ -41,7 +41,6 @@ public class SearchController {
 		System.out.println("cdnm : " + vo.getCDNM());
 		System.out.println("rollUp : " + vo.getRollUp());
 		
-		
 		List search = chart_service.searchList(vo);
 		/*
 		 * search.add(ta.getProxyTime()); System.out.println("proxyTime check : " +

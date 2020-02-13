@@ -21,6 +21,20 @@
 	
     
     <script>
+    
+	    window.onload = function () {
+	    	minMaxColor();
+	    };
+	    
+	    function minMaxColor(){
+	    	$( ".trRow2:contains('▲')" ).css( "color", "red" );
+	    	$( ".trRow2:contains('▼')" ).css( "color", "blue" );
+	    	$( ".trRow:contains('합계')" ).css( "background-color","#82FA58");
+	    	$( ".trRow:contains('합계')" ).css( "font-weight","bold" );
+	    	$( ".trRow:contains('총계')" ).css( "background-color","#A9F5F2" );
+	    	$( ".trRow:contains('총계')" ).css( "font-weight","bold" );
+	    };
+    
     	function search(){
     		//var searchForm = $("#searchForm").serialize();
     		//alert(searchForm);
@@ -89,18 +103,19 @@
     							"경과시간 : <span class='proxySec'>" +ajaxList[i] + "초</span>");
     					}else{
     					$(".resultTable").append(
-	    					"<tr class='.trRow'><td align='center'>" + ajaxList[i].cdnm + 
+	    					"<tr class='trRow'><td align='center'>" + ajaxList[i].cdnm + 
 	    					"</td><td align='center'>" + ajaxList[i].region_area + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p0 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p1 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p2 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p3 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p4 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p5 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p6 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p7 + "</td>" +
-	    					"</td><td align='center'>" + ajaxList[i].p8 + "</td></tr>"
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p0 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p1 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p2 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p3 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p4 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p5 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p6 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p7 + "</td>" +
+	    					"</td><td class='trRow2' align='center'>" + ajaxList[i].p8 + "</td></tr>"
     					)};
+    					minMaxColor();
     				}
     			}
     		});
@@ -208,15 +223,15 @@
 			 			<tr class="trRow">
 			 				<td align="center"><c:out value="${list.CDNM}"/></td>
 							<td align="center"><c:out value="${list.region_area}" /></td>
-							<td align="center"><c:out value="${list.p0}" /></td>
-							<td align="center"><c:out value="${list.p1}" /></td>
-							<td align="center"><c:out value="${list.p2}" /></td>
-							<td align="center"><c:out value="${list.p3}" /></td>
-							<td align="center"><c:out value="${list.p4}" /></td>
-							<td align="center"><c:out value="${list.p5}" /></td>
-							<td align="center"><c:out value="${list.p6}" /></td>
-							<td align="center"><c:out value="${list.p7}" /></td>
-							<td align="center"><c:out value="${list.p8}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p0}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p1}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p2}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p3}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p4}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p5}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p6}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p7}" /></td>
+							<td class="trRow2" align="center"><c:out value="${list.p8}" /></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

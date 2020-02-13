@@ -15,7 +15,6 @@ public class chartDAOImpl implements chartDAO {
 	@Autowired
 	private SqlSession session;
 	
-	
 	@Override
 	public List<chartVO> list() {
 		System.out.println("chartDAOImpl In");

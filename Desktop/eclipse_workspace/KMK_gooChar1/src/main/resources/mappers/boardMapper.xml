@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="cdList"  resultType="cdTblVO">
-		SELECT * FROM CD_TBL WHERE CD_ID!=00010 ORDER BY CD_ID
+		SELECT * FROM CD_TBL WHERE CD_NM!='스팀다리미' ORDER BY CD_ID
 	</select>
 	
 	<select id="searchList" parameterType="searchVO" resultType="chartVO">

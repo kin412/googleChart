@@ -93,6 +93,10 @@ public class HomeController {
 		 * model.addAttribute("proxyTime",ta.getProxyTime());
 		 */
 		
+		/*for(cdTblVO vo2: cdList) {
+			System.out.println(vo2);
+		}*/
+		
 		model.addAttribute("list",search);
 		model.addAttribute("cdList",cdList);
 		
