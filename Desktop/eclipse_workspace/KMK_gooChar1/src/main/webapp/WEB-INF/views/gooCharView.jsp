@@ -159,17 +159,17 @@
 		</div>
 		
 		<div class="areaNum">
-			서울<input type ="text" name="areaOrder_seoul" style="width:30px;">
-			부산<input type ="text" name="areaOrder_busan" style="width:30px;">
-			광주<input type ="text" name="areaOrder_gwangju" style="width:30px;">
-			대전<input type ="text" name="areaOrder_daejeon" style="width:30px;">
-			평택<input type ="text" name="areaOrder_pyeongtaek" style="width:30px;">
+			서울<input type ="text" name="areaOrder_seoul" style="width:30px;" value="1">
+			부산<input type ="text" name="areaOrder_busan" style="width:30px;" value="2">
+			광주<input type ="text" name="areaOrder_gwangju" style="width:30px;" value="3">
+			대전<input type ="text" name="areaOrder_daejeon" style="width:30px;" value="4">
+			평택<input type ="text" name="areaOrder_pyeongtaek" style="width:30px;" value="5">
 			<br>
-			인천<input type ="text" name="areaOrder_incheon" style="width:30px;">
-			아산<input type ="text" name="areaOrder_asan" style="width:30px;">
-			안양<input type ="text" name="areaOrder_anyang" style="width:30px;">
-			강원<input type ="text" name="areaOrder_gangwon" style="width:30px;">
-			파주<input type ="text" name="areaOrder_paju" style="width:30px;">
+			인천<input type ="text" name="areaOrder_incheon" style="width:30px;" value="6">
+			아산<input type ="text" name="areaOrder_asan" style="width:30px;" value="7">
+			안양<input type ="text" name="areaOrder_anyang" style="width:30px;" value="8">
+			강원<input type ="text" name="areaOrder_gangwon" style="width:30px;" value="9">
+			파주<input type ="text" name="areaOrder_paju" style="width:30px;" value="10">
 		</div><br>
 		
 		<div class="order">
